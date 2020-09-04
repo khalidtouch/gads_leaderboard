@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GADS20 Leaderboard</string>
+    <string name="gads_image_text">GADS_IMAGE</string>
 </resources>
