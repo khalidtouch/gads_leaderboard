@@ -1,6 +1,5 @@
 package com.khalid.gads20leaderboard;
 
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,8 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 public class LearningRecyclerAdapter extends RecyclerView.Adapter<LearningRecyclerAdapter.LearningViewHolder> {
