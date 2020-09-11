@@ -1,5 +1,6 @@
 package com.khalid.gads20leaderboard;
 
+import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,25 +8,39 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.LongDef;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.khalid.gads20leaderboard.data.HighLearner;
+import com.khalid.gads20leaderboard.web.HighLearnerResponse;
 
 import java.util.List;
 
 public class LearningRecyclerAdapter extends RecyclerView.Adapter<LearningRecyclerAdapter.LearningViewHolder> {
 
     private List<HighLearner> mHighLearners;
+    private List<HighLearnerResponse> mHighLearnerResponses;
     private static String TAG = "adapter";
-
-    public LearningRecyclerAdapter(List<HighLearner> highLearners) {
+    private Context mContext;
+    private boolean mIsLocal;
+    public LearningRecyclerAdapter(List<HighLearner> highLearners, boolean isLocal) {
         mHighLearners = highLearners;
+        mIsLocal = isLocal;
     }
+    public LearningRecyclerAdapter(List<HighLearnerResponse> highLearnersResponses) {
+        mHighLearnerResponses = highLearnersResponses;
+    }
+
 
     @NonNull
     @Override
     public LearningViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.learners_item_layout,
                 parent, false);
+        mContext = parent.getContext();
         Log.d(TAG, "onCreateViewHolder: initialized all parameters");
         return new LearningViewHolder(view);
     }
@@ -33,16 +48,32 @@ public class LearningRecyclerAdapter extends RecyclerView.Adapter<LearningRecycl
     @Override
     public void onBindViewHolder(@NonNull LearningViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: Binding views to recycler view");
-        HighLearner learner = mHighLearners.get(position);
-        holder.mImageView.setImageResource(learner.getImageURL());
+        HighLearnerResponse learner = mHighLearnerResponses.get(position);
+        if(learner.getBadgeUrl() == null) {
+            holder.mImageView.setImageResource(learner.getPlaceHolderImageUrl());
+        } else {
+            Glide.with(mContext).load(learner.getBadgeUrl())
+                    .apply(RequestOptions.centerCropTransform())
+                    .into(holder.mImageView);
+        }
+        Log.d(TAG, "onBindViewHolder: image loaded, processing subtitle");
+        String subtitle = learner.getHours() + " Learning hours, " + learner.getCountry();
         holder.mDevName.setText(learner.getDevName());
-        holder.mDevDetails.setText(learner.getDevDetails());
+        holder.mDevDetails.setText(subtitle);
         Log.d(TAG, "onBindViewHolder: view binded");
     }
 
     @Override
     public int getItemCount() {
-        return mHighLearners.size();
+        if(mHighLearners != null) {
+            return mHighLearnerResponses.size();
+        }
+        return 0;
+    }
+
+    public void setData(List<HighLearnerResponse> learners) {
+        mHighLearnerResponses = learners;
+        notifyDataSetChanged();
     }
 
     public class LearningViewHolder extends RecyclerView.ViewHolder {

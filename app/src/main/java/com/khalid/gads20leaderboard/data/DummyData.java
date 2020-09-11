@@ -1,20 +1,19 @@
-package com.khalid.gads20leaderboard;
+package com.khalid.gads20leaderboard.data;
 
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataRepository {
+public class DummyData {
     private static List<HighLearner> mLearner;
     private static List<HighSkiller> mSkiller;
-    private static DataRepository INSTANCE = null;
+    private static DummyData INSTANCE = null;
 
-    private DataRepository() {}
+    private DummyData() {}
 
-    public static synchronized DataRepository getInstance() {
+    public static synchronized DummyData getInstance() {
         if(INSTANCE == null) {
-            INSTANCE = new DataRepository();
+            INSTANCE = new DummyData();
         }
         initDevs();
         return INSTANCE;
@@ -24,10 +23,11 @@ public class DataRepository {
         mLearner = new ArrayList<>();
         mSkiller = new ArrayList<>();
         HighLearner highLearner = new HighLearner(
-                "Khalid Isah", "Batch A");
+                "Khalid Isah", "Nigeria",
+                "badge.com", 34);
         HighSkiller highSkiller = new HighSkiller(
-          "Tony Stark", "Batch B"
-        );
+          "Tony Stark", "Kenya", "badge.com",
+                280);
 
         for(int i = 0; i < 5; i++) {
             mLearner.add(highLearner);
