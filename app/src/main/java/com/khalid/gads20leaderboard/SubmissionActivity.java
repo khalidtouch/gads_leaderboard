@@ -128,11 +128,15 @@ public class SubmissionActivity extends AppCompatActivity implements View.OnClic
                 @Override
                 public void onResponse(Call<SubmissionRequest> call, Response<SubmissionRequest> response) {
                     Log.d(TAG, "onResponse: Submitted");
+                    //Toast.makeText(SubmissionActivity.this, "Congratulations", Toast.LENGTH_LONG).show();
+                    showSuccessDialog();
                 }
 
                 @Override
                 public void onFailure(Call<SubmissionRequest> call, Throwable t) {
                     Log.d(TAG, "onFailure: Failed to submit");
+                    //Toast.makeText(SubmissionActivity.this, "Oops", Toast.LENGTH_LONG).show();
+                    showAbortedDialog();
                 }
             });
         } else {
@@ -148,7 +152,6 @@ public class SubmissionActivity extends AppCompatActivity implements View.OnClic
         switch (v.getId()) {
             case R.id.positive_button:
                 mDialog.cancel();
-                showSuccessDialog();
                 makeSubmission();
                 break;
             case R.id.negative_button:
