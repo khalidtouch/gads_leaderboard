@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GADS20 Leaderboard</string>
+    <string name="app_name">Leaderboard</string>
     <string name="gads_image_text">GADS_IMAGE</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

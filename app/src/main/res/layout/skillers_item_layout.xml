@@ -12,7 +12,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent">
 
             <TextView
                 android:id="@+id/s_developer_name"
@@ -22,6 +23,8 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:text="TextView"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,16 +33,18 @@
                 style="@style/TextAppearance.MaterialComponents.Subtitle1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:text="TextView"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/s_developer_name"
                 app:layout_constraintStart_toStartOf="@+id/s_developer_name"
                 app:layout_constraintTop_toBottomOf="@+id/s_developer_name" />
 
             <ImageView
                 android:id="@+id/s_learning_image"
-                android:layout_width="150dp"
-                android:layout_height="89dp"
+                android:layout_width="122dp"
+                android:layout_height="71dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"

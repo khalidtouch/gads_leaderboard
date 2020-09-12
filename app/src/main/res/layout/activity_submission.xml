@@ -17,29 +17,35 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <EditText
+        android:id="@+id/last_name_et"
+        style="@style/EditTextAppearance"
+        android:layout_width="0dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="@string/last_name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/first_name_et"
+        app:layout_constraintTop_toTopOf="@+id/first_name_et" />
+
+    <EditText
         android:id="@+id/first_name_et"
         style="@style/EditTextAppearance"
-        android:layout_width="190dp"
+        android:layout_width="0dp"
         android:layout_height="47dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="@string/first_name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toStartOf="@+id/last_name_et"
-        app:layout_constraintStart_toStartOf="@+id/textView5"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view" />
-
-    <EditText
-        android:id="@+id/last_name_et"
-        style="@style/EditTextAppearance"
-        android:layout_width="190dp"
-        android:layout_height="47dp"
-        android:ems="10"
-        android:hint="@string/last_name"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toTopOf="@+id/first_name_et" />
 
     <EditText
         android:id="@+id/email_address_et"
@@ -49,20 +55,20 @@
         android:layout_marginTop="50dp"
         android:ems="10"
         android:hint="@string/email_address"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="@+id/last_name_et"
         app:layout_constraintStart_toStartOf="@+id/first_name_et"
         app:layout_constraintTop_toBottomOf="@+id/first_name_et" />
 
     <EditText
         android:id="@+id/github_link_et"
+        style="@style/EditTextAppearance"
         android:layout_width="0dp"
         android:layout_height="47dp"
         android:layout_marginTop="50dp"
-        style="@style/EditTextAppearance"
         android:ems="10"
         android:hint="@string/project_on_github_link"
-        android:inputType="textPersonName"
+        android:inputType="textWebEmailAddress"
         app:layout_constraintEnd_toEndOf="@+id/email_address_et"
         app:layout_constraintStart_toStartOf="@+id/email_address_et"
         app:layout_constraintTop_toBottomOf="@+id/email_address_et" />
@@ -70,11 +76,11 @@
     <Button
         android:id="@+id/submit_btn_two"
         style="@style/ButtonTextAppearance"
-        android:layout_width="173dp"
-        android:layout_height="46dp"
+        android:layout_width="131dp"
+        android:layout_height="49dp"
         android:layout_marginTop="100dp"
-        android:text="@string/submit"
         android:focusable="true"
+        android:text="@string/submit"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="@+id/github_link_et"
         app:layout_constraintStart_toStartOf="@+id/github_link_et"
@@ -95,8 +101,8 @@
         style="@style/TextAppearance.MaterialComponents.Headline5"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/project_submission"
         android:textAlignment="center"
         android:textColor="#E4B94D"

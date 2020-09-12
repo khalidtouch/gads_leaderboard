@@ -2,10 +2,21 @@ package com.khalid.gads20leaderboard.web;
 
 import androidx.annotation.NonNull;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class SubmissionRequest {
+    @Expose
+    @SerializedName("name")
     private String name;
+    @Expose
+    @SerializedName("lastName")
     private String lastName;
+    @Expose
+    @SerializedName("email")
     private String email;
+    @Expose
+    @SerializedName("link")
     private String link;
 
     public String getName() {
