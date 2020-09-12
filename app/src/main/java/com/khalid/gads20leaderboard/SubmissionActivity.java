@@ -122,23 +122,27 @@ public class SubmissionActivity extends AppCompatActivity implements View.OnClic
         if(!TextUtils.isEmpty(firstName) &&  !TextUtils.isEmpty(lastName)
                     && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(link)) {
             ApiInterface apiInterface = ApiPostService.getClient().create(ApiInterface.class);
-            retrofit2.Call<SubmissionRequest> call = apiInterface.submit(
-                    email, firstName, lastName, link);
-            call.enqueue(new Callback<SubmissionRequest>() {
+            retrofit2.Call<Void> call = apiInterface.submit(
+                    email, firstName, lastName, link
+            );
+            Log.d(TAG, "makeSubmission: attempting submission");
+
+            call.enqueue(new Callback<Void>() {
                 @Override
-                public void onResponse(Call<SubmissionRequest> call, Response<SubmissionRequest> response) {
+                public void onResponse(Call<Void> call, Response<Void> response) {
                     Log.d(TAG, "onResponse: Submitted");
                     //Toast.makeText(SubmissionActivity.this, "Congratulations", Toast.LENGTH_LONG).show();
                     showSuccessDialog();
                 }
 
                 @Override
-                public void onFailure(Call<SubmissionRequest> call, Throwable t) {
+                public void onFailure(Call<Void> call, Throwable t) {
                     Log.d(TAG, "onFailure: Failed to submit");
                     //Toast.makeText(SubmissionActivity.this, "Oops", Toast.LENGTH_LONG).show();
                     showAbortedDialog();
                 }
             });
+
         } else {
             Toast.makeText(this, "Fill the blanks", Toast.LENGTH_LONG).show();
         }
