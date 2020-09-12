@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SubmissionActivity">
+
+    <View
+        android:id="@+id/view"
+        style="@style/ViewAppearance"
+        android:layout_width="305dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView5"
+        app:layout_constraintStart_toStartOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <EditText
+        android:id="@+id/first_name_et"
+        style="@style/EditTextAppearance"
+        android:layout_width="190dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="@string/first_name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/last_name_et"
+        app:layout_constraintStart_toStartOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    <EditText
+        android:id="@+id/last_name_et"
+        style="@style/EditTextAppearance"
+        android:layout_width="190dp"
+        android:layout_height="47dp"
+        android:ems="10"
+        android:hint="@string/last_name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toTopOf="@+id/first_name_et" />
+
+    <EditText
+        android:id="@+id/email_address_et"
+        style="@style/EditTextAppearance"
+        android:layout_width="0dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="50dp"
+        android:ems="10"
+        android:hint="@string/email_address"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/last_name_et"
+        app:layout_constraintStart_toStartOf="@+id/first_name_et"
+        app:layout_constraintTop_toBottomOf="@+id/first_name_et" />
+
+    <EditText
+        android:id="@+id/github_link_et"
+        android:layout_width="0dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="50dp"
+        style="@style/EditTextAppearance"
+        android:ems="10"
+        android:hint="@string/project_on_github_link"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/email_address_et"
+        app:layout_constraintStart_toStartOf="@+id/email_address_et"
+        app:layout_constraintTop_toBottomOf="@+id/email_address_et" />
+
+    <Button
+        android:id="@+id/submit_btn_two"
+        style="@style/ButtonTextAppearance"
+        android:layout_width="173dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="100dp"
+        android:text="@string/submit"
+        android:focusable="true"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="@+id/github_link_et"
+        app:layout_constraintStart_toStartOf="@+id/github_link_et"
+        app:layout_constraintTop_toBottomOf="@+id/github_link_et" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_gads_image" />
+
+    <TextView
+        android:id="@+id/textView5"
+        style="@style/TextAppearance.MaterialComponents.Headline5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/project_submission"
+        android:textAlignment="center"
+        android:textColor="#E4B94D"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

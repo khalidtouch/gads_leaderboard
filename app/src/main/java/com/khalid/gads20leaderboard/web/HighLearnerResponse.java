@@ -3,7 +3,7 @@ package com.khalid.gads20leaderboard.web;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.khalid.gads20leaderboard.data.Leaderboard;
+
 
 public class HighLearnerResponse implements Leaderboard{
 

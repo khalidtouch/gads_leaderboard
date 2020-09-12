@@ -32,11 +32,11 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="218dp"
-        android:layout_height="202dp"
+        android:layout_width="256dp"
+        android:layout_height="247dp"
         android:layout_marginStart="100dp"
         android:layout_marginTop="70dp"
-        android:background="#070707"
+        android:background="@color/colorPrimaryDark"
         android:contentDescription="@string/gads_image_text"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintHorizontal_bias="0.163"

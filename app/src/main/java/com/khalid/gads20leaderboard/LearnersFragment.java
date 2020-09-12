@@ -1,5 +1,6 @@
 package com.khalid.gads20leaderboard;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,14 +13,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.khalid.gads20leaderboard.data.DummyData;
-import com.khalid.gads20leaderboard.data.HighLearner;
-import com.khalid.gads20leaderboard.data.LearnerViewModel;
-import com.khalid.gads20leaderboard.web.ApiClient;
 import com.khalid.gads20leaderboard.web.ApiInterface;
+import com.khalid.gads20leaderboard.web.ApiService;
 import com.khalid.gads20leaderboard.web.HighLearnerResponse;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,14 +29,11 @@ import retrofit2.Response;
 
 public class LearnersFragment extends Fragment {
     private RecyclerView mRecyclerView;
-    private List<HighLearner> mHighLearners = new ArrayList<>();
     private List<HighLearnerResponse> mHighLearnerResponses = new ArrayList<>();
     private static String TAG = "LearnersFragment";
-    private LearnerViewModel mViewModel;
-    private LearningRecyclerAdapter mAdapter;
 
     public LearnersFragment() {
-        // Required empty public constructor
+        // Required skempty public constructor
     }
 
 
@@ -46,18 +41,6 @@ public class LearnersFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mAdapter = new LearningRecyclerAdapter(mHighLearnerResponses);
-        mViewModel = ViewModelProviders.of(this).get(LearnerViewModel.class);
-        mViewModel.init();
-        mViewModel.getLearnersResponseLiveData().observe(this,
-                new Observer<List<HighLearnerResponse>>() {
-                    @Override
-                    public void onChanged(List<HighLearnerResponse> highLearnerResponses) {
-                        if (highLearnerResponses != null) {
-                            mAdapter.setData(highLearnerResponses);
-                        }
-                    }
-                });
     }
 
     @Override
@@ -67,20 +50,35 @@ public class LearnersFragment extends Fragment {
                 false);
 
 
-        //DummyData repository = DummyData.getInstance();
-       // mHighLearners = DummyData.getAllLearners();
         mRecyclerView = view.findViewById(R.id.learning_fragment_recycler_view);
-        mRecyclerView.setHasFixedSize(true);
+        LearningRecyclerAdapter adapter = new LearningRecyclerAdapter(mHighLearnerResponses);
         Log.d(TAG, "onCreateView: starting layout manager");
         mRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setAdapter(adapter);
         Log.d(TAG, "onCreateView: completed recycler view integration");
-        updateUI();
+
+        ApiInterface apiInterface = ApiService.getClient().create(ApiInterface.class);
+
+        Call<List<HighLearnerResponse>> call = apiInterface.getHighLearners();
+        call.enqueue(new Callback<List<HighLearnerResponse>>() {
+            @Override
+            public void onResponse(Call<List<HighLearnerResponse>> call,
+                                   Response<List<HighLearnerResponse>> response) {
+                mHighLearnerResponses = response.body();
+                Log.d(TAG, "onResponse: Response started");
+                adapter.setData(mHighLearnerResponses);
+            }
+
+            @Override
+            public void onFailure(Call<List<HighLearnerResponse>> call, Throwable t) {
+                Log.d("TAG","Response = "+t.toString());
+            }
+        });
 
         return view;
     }
 
-    public void updateUI(){
-        mViewModel.getAllLearners();
-    }
+
+
+
 }

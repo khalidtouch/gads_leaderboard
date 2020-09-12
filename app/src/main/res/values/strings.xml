@@ -6,6 +6,17 @@
     <string name="learners_fragment">Learning Leaders</string>
     <string name="skill_iq_fragment">Skill IQ Leaders</string>
     <string name="leaderboard">LEADERBOARD</string>
+    <string name="submit">Submit</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email_address">Email Address</string>
+    <string name="project_on_github_link">Project on GITHUB (Link)</string>
+    <string name="project_submission">Project Submission</string>
+    <string name="are_you_sure">Are you sure?</string>
+    <string name="yes">Yes</string>
+    <string name="cancel">cancel</string>
+    <string name="successful_submission">Successful Submission</string>
+    <string name="submission_not_successful">Submission not Successful</string>
     <string-array name="child_fragment_names">
         <item>@string/learners_fragment</item>
         <item>@string/skill_iq_fragment</item>

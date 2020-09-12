@@ -8,28 +8,23 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.LongDef;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.khalid.gads20leaderboard.data.HighLearner;
 import com.khalid.gads20leaderboard.web.HighLearnerResponse;
 
 import java.util.List;
 
 public class LearningRecyclerAdapter extends RecyclerView.Adapter<LearningRecyclerAdapter.LearningViewHolder> {
 
-    private List<HighLearner> mHighLearners;
+
     private List<HighLearnerResponse> mHighLearnerResponses;
     private static String TAG = "adapter";
     private Context mContext;
     private boolean mIsLocal;
-    public LearningRecyclerAdapter(List<HighLearner> highLearners, boolean isLocal) {
-        mHighLearners = highLearners;
-        mIsLocal = isLocal;
-    }
+
     public LearningRecyclerAdapter(List<HighLearnerResponse> highLearnersResponses) {
         mHighLearnerResponses = highLearnersResponses;
     }
@@ -65,10 +60,7 @@ public class LearningRecyclerAdapter extends RecyclerView.Adapter<LearningRecycl
 
     @Override
     public int getItemCount() {
-        if(mHighLearners != null) {
-            return mHighLearnerResponses.size();
-        }
-        return 0;
+        return mHighLearnerResponses.size();
     }
 
     public void setData(List<HighLearnerResponse> learners) {
@@ -76,7 +68,7 @@ public class LearningRecyclerAdapter extends RecyclerView.Adapter<LearningRecycl
         notifyDataSetChanged();
     }
 
-    public class LearningViewHolder extends RecyclerView.ViewHolder {
+    public static class LearningViewHolder extends RecyclerView.ViewHolder {
         private TextView mDevName, mDevDetails;
         private ImageView mImageView;
 

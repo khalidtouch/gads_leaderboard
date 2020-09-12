@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.khalid.gads20leaderboard">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +12,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".SubmissionAborted"
+            android:configChanges="orientation"
+            android:excludeFromRecents="true"
+            android:theme="@style/Theme.SubmissionDialog"
+           />
+
+        <activity android:name=".SuccessfulSubmission"
+            android:configChanges="orientation"
+            android:excludeFromRecents="true"
+            android:theme="@style/Theme.SubmissionDialog"/>
+
+        <activity
+            android:name=".SubmissionDialog"
+            android:configChanges="orientation"
+            android:excludeFromRecents="true"
+            android:theme="@style/Theme.SubmissionDialog" />
+
+        <activity android:name=".SubmissionActivity" />
+
+        <activity android:name=".HomeActivity" />
+
         <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
